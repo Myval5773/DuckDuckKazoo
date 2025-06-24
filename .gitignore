@@ -13,3 +13,9 @@ Saved
 
 Content/*_BuiltData.uasset
 Build/*
+
+.vs/                   
+*.ipch                 
+*.log                  
+*.pdb                  
+*.user                 
