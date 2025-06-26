@@ -31,8 +31,11 @@ void UMainMenu::NativeConstruct()
 void UMainMenu::NativeDestruct() {
 	FInputModeGameOnly InputModeData;
 	InputModeData.SetConsumeCaptureMouseDown(true);
-	GetWorld()->GetFirstPlayerController()->SetInputMode(InputModeData);
-	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = false;
+	if (GetWorld() != nullptr && GetWorld()->GetFirstPlayerController() != nullptr)
+	{
+		GetWorld()->GetFirstPlayerController()->SetInputMode(InputModeData);
+		GetWorld()->GetFirstPlayerController()->bShowMouseCursor = false;
+	}
 
 	Super::NativeDestruct();
 }
