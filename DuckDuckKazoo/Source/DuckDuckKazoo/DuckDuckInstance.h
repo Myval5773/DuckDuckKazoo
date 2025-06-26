@@ -32,8 +32,8 @@ public:
 	UFUNCTION(Exec)
 	void Join(const FString& IPAddress);
 
-	//UFUNCTION(BlueprintCallable)
-	//void OpenMenu();
+	UFUNCTION(Exec, BlueprintCallable)
+	void OpenMenu();
 
 	UFUNCTION(Exec)
 	void SearchAvailableSessions();
@@ -41,8 +41,17 @@ public:
 	UFUNCTION(Exec)
 	void CreateASession();
 
+	UFUNCTION(Exec)
+	void StartSingleplayerMode(FName MapName);
+
+	UFUNCTION(Exec)
+	void QuitGame();
+
 protected:
 	virtual void Init();
+
+	UPROPERTY()
+	TSubclassOf<class UUserWidget> OnlineMenu;
 
 	UPROPERTY()
 	TSubclassOf<class UUserWidget> MainMenu;

@@ -2,6 +2,9 @@
 
 
 #include "DuckDuckInstance.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
+#include "MainMenu.h"
 
 static const FName SESSION_NAME = FName("MySession");
 
@@ -37,7 +40,7 @@ void UDuckDuckInstance::Init()
 		}
 	}
 
-	/*if (MainMenu && GetWorld())
+	if (MainMenu && GetWorld())
 	{
 		UMainMenu* MainMenuWidget = CreateWidget<UMainMenu>(GetWorld(), MainMenu);
 		if (ensure(MainMenuWidget != nullptr))
@@ -45,7 +48,17 @@ void UDuckDuckInstance::Init()
 			MainMenuWidget->SetGameInstance(this);
 			MainMenuWidget->AddToViewport();
 		}
-	}*/
+	}
+}
+
+void UDuckDuckInstance::StartSingleplayerMode(FName MapName)
+{
+	UGameplayStatics::OpenLevel(GetWorld(), MapName, true);
+}
+
+void UDuckDuckInstance::QuitGame()
+{
+	UKismetSystemLibrary::QuitGame(GetWorld(), UGameplayStatics::GetPlayerController(GetWorld(),0),EQuitPreference::Quit, true);
 }
 
 void UDuckDuckInstance::CreateASession()
@@ -137,7 +150,9 @@ void UDuckDuckInstance::Join(const FString& IPAddress) {
 	Controller->ClientTravel(*IPAddress, ETravelType::TRAVEL_Absolute);
 }
 
-/*void UDuckDuckInstance::OpenMenu() {
+
+
+void UDuckDuckInstance::OpenMenu() {
 	if (!ensure(MainMenu != nullptr)) return;
 
 	UMainMenu* Menu = CreateWidget<UMainMenu>(this, MainMenu);
@@ -146,16 +161,4 @@ void UDuckDuckInstance::Join(const FString& IPAddress) {
 
 	Menu->SetGameInstance(this);
 	Menu->AddToViewport();
-
-	/*
-	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
-	if (!ensure(PlayerController != nullptr)) return;
-
-	FInputModeUIOnly InputMode;
-
-	InputMode.SetWidgetToFocus(MainMenuWidgetClass->TakeWidget());
-	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
-	PlayerController->SetInputMode(InputMode);
-	PlayerController->bShowMouseCursor = true;
-	*/
-//}
+}
