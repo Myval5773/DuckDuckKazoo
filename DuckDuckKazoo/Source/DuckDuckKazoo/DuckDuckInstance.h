@@ -12,6 +12,7 @@
 #include "OnlineSubsystem.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "OnlineSessionSettings.h"
+#include "Engine/World.h"
 
 #include "DuckDuckInstance.generated.h"
 
@@ -26,11 +27,8 @@ class DUCKDUCKKAZOO_API UDuckDuckInstance : public UGameInstance
 public:
 	UDuckDuckInstance(const FObjectInitializer& ObjectInitializer);
 
-	UFUNCTION(Exec)
-	void Host();
-
-	UFUNCTION(Exec)
-	void Join(const FString& IPAddress);
+	//UFUNCTION(Exec)
+	//void Host();
 
 	UFUNCTION(Exec, BlueprintCallable)
 	void OpenMenu();
@@ -39,7 +37,10 @@ public:
 	void SearchAvailableSessions();
 
 	UFUNCTION(Exec)
-	void CreateASession();
+	void HostLocally();
+
+	UFUNCTION(Exec)
+	void JoinLocally(const FString& IPAddress);
 
 	UFUNCTION(Exec)
 	void StartSingleplayerMode(FName MapName);
@@ -75,6 +76,6 @@ private:
 	FDelegateHandle OnFindSessionCompleteDelegateHandle;
 
 	void OnCreateSessionComplete(FName SessionName, bool bWasSuccessful);
-	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
+	//void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
 	//void OnFindSessionsComplete(bool bWasSuccessful);	
 };

@@ -4,19 +4,42 @@
 #include "MainMenu.h"
 #include "DuckDuckInstance.h"
 
+#include "Components/WidgetSwitcher.h"
+#include "Blueprint/UserWidget.h"
+#include "Components/Button.h"
+#include "Components/EditableTextBox.h"
+#include "Components/EditableText.h"
+
 void UMainMenu::NativeConstruct()
 {
 	Super::NativeConstruct();
 
 	if (!ensure(SingleplayerButton != nullptr)) return;
 	if (!ensure(LocalButton != nullptr)) return;
+	if (!ensure(LocalJoinButton != nullptr)) return;
+	if (!ensure(LocalHostButton != nullptr)) return;
+	if (!ensure(LocalCancelButton != nullptr)) return;
+	if (!ensure(LocalConfirmButton != nullptr)) return;
+	if (!ensure(IPAddressField != nullptr)) return;
 	if (!ensure(OnlineButton != nullptr)) return;
 	if (!ensure(QuitButton != nullptr)) return;
+	if (!ensure(MenuSwitcher != nullptr)) return;
 
-	SingleplayerButton->OnClicked.AddDynamic(this, &UMainMenu::SingleplayerButtonClicked);
-	//LocalButton->OnClicked.AddDynamic(this, &UMainMenu::OnJoinButtonClicked);
-	//OnlineButton->OnClicked.AddDynamic(this, &UMainMenu::CancelJoinMenu);
-	//QuitButton->OnClicked.AddDynamic(this, &UMainMenu::QuitButtonClicked);
+	// Singleplayer
+	SingleplayerButton->OnClicked.AddDynamic(this, &UMainMenu::OnSingleplayerButtonClicked);
+
+	// Local
+	LocalButton->OnClicked.AddDynamic(this, &UMainMenu::OnLocalButtonClicked);
+	LocalHostButton->OnClicked.AddDynamic(this, &UMainMenu::OnLocalHostButtonClicked);
+	LocalJoinButton->OnClicked.AddDynamic(this, &UMainMenu::OnLocalJoinButtonClicked);
+	LocalCancelButton->OnClicked.AddDynamic(this, &UMainMenu::OnLocalCancelButtonClicked);
+	LocalConfirmButton->OnClicked.AddDynamic(this, &UMainMenu::OnLocalConfirmButtonClicked);
+
+	// Online
+	OnlineButton->OnClicked.AddDynamic(this, &UMainMenu::OnOnlineButtonClicked);
+
+	// Quit
+	QuitButton->OnClicked.AddDynamic(this, &UMainMenu::OnQuitButtonClicked);
 
 	APlayerController* Controller = GetWorld()->GetFirstPlayerController();
 	if (!ensure(Controller != nullptr)) { return; };	
@@ -46,7 +69,7 @@ void UMainMenu::SetGameInstance(UDuckDuckInstance* GameInstance) {
 	DuckDuckInstance = GameInstance;
 }
 
-void UMainMenu::SingleplayerButtonClicked() 
+void UMainMenu::OnSingleplayerButtonClicked() 
 {
 	APlayerController* Controller = GetWorld()->GetFirstPlayerController();
 
@@ -61,10 +84,57 @@ void UMainMenu::SingleplayerButtonClicked()
 	}
 }
 
-void UMainMenu::QuitButtonClicked()
+void UMainMenu::OnQuitButtonClicked()
 {
 	if (DuckDuckInstance != nullptr)
 	{
 		DuckDuckInstance->QuitGame();
 	}
+}
+
+void UMainMenu::OnLocalButtonClicked()
+{
+	if (MenuSwitcher)
+	{
+		MenuSwitcher->SetActiveWidgetIndex(1);
+	}
+}
+
+void UMainMenu::OnLocalHostButtonClicked()
+{
+	if (DuckDuckInstance)
+	{
+		DuckDuckInstance->HostLocally();
+	}
+}
+
+void UMainMenu::OnLocalJoinButtonClicked()
+{
+	if (MenuSwitcher)
+	{
+		MenuSwitcher->SetActiveWidgetIndex(3);
+	}
+}
+
+void UMainMenu::OnLocalCancelButtonClicked()
+{
+	if (MenuSwitcher)
+	{
+		MenuSwitcher->SetActiveWidgetIndex(0);
+	}
+}
+
+void UMainMenu::OnLocalConfirmButtonClicked()
+{
+	FText IPAddressToJoin = IPAddressField->GetText();
+	FString IPAddressToJoinString = IPAddressToJoin.ToString();
+	if (DuckDuckInstance)
+	{
+		DuckDuckInstance->JoinLocally(*IPAddressToJoinString);
+	}
+}
+
+void UMainMenu::OnOnlineButtonClicked()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Online button clicked"));
 }

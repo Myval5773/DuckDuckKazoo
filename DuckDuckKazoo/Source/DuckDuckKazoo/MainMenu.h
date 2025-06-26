@@ -27,6 +27,22 @@ protected:
 	TObjectPtr<UButton> LocalButton;
 
 	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> LocalHostButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> LocalJoinButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> LocalCancelButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> LocalConfirmButton;
+
+	UPROPERTY(meta = (BindWidget))
+	class UEditableText* IPAddressField;
+
+
+	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> OnlineButton;
 
 	UPROPERTY(meta = (BindWidget))
@@ -34,6 +50,9 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	class UWidget* MainMenu;
+
+	UPROPERTY(meta = (BindWidget))
+	class UWidgetSwitcher* MenuSwitcher;
 
 public:
 	void SetGameInstance(class UDuckDuckInstance* GameInstance);
@@ -43,8 +62,26 @@ private:
 	class UDuckDuckInstance* DuckDuckInstance;
 
 	UFUNCTION(Exec)
-	void SingleplayerButtonClicked();
+	void OnSingleplayerButtonClicked();
 
-	UFUNCTION()
-	void QuitButtonClicked();
+	UFUNCTION(Exec)
+	void OnQuitButtonClicked();
+
+	UFUNCTION(Exec)
+	void OnLocalButtonClicked();
+
+	UFUNCTION(Exec)
+	void OnLocalHostButtonClicked();
+
+	UFUNCTION(Exec)
+	void OnLocalJoinButtonClicked();
+
+	UFUNCTION(Exec)
+	void OnLocalCancelButtonClicked();
+
+	UFUNCTION(Exec)
+	void OnLocalConfirmButtonClicked();
+	
+	UFUNCTION(Exec)
+	void OnOnlineButtonClicked();
 };

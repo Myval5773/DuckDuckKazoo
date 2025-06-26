@@ -32,8 +32,8 @@ void UDuckDuckInstance::Init()
 			OnCreateSessionCompleteDelegate = FOnCreateSessionCompleteDelegate::CreateUObject(this, &UDuckDuckInstance::OnCreateSessionComplete);
 			OnCreateSessionCompleteDelegateHandle = SessionInterface->AddOnCreateSessionCompleteDelegate_Handle(OnCreateSessionCompleteDelegate);
 
-			OnDestroySessionCompleteDelegate = FOnDestroySessionCompleteDelegate::CreateUObject(this, &UDuckDuckInstance::OnDestroySessionComplete);
-			OnDestroySessionCompleteDelegateHandle = SessionInterface->AddOnDestroySessionCompleteDelegate_Handle(OnDestroySessionCompleteDelegate);
+			//OnDestroySessionCompleteDelegate = FOnDestroySessionCompleteDelegate::CreateUObject(this, &UDuckDuckInstance::OnDestroySessionComplete);
+			//OnDestroySessionCompleteDelegateHandle = SessionInterface->AddOnDestroySessionCompleteDelegate_Handle(OnDestroySessionCompleteDelegate);
 
 			//OnFindSessionCompleteDelegate = FOnFindSessionsCompleteDelegate::CreateUObject(this, &UDuckDuckInstance::OnFindSessionsComplete);
 			//OnFindSessionCompleteDelegateHandle = SessionInterface->AddOnFindSessionsCompleteDelegate_Handle(OnFindSessionCompleteDelegate);
@@ -61,22 +61,40 @@ void UDuckDuckInstance::QuitGame()
 	UKismetSystemLibrary::QuitGame(GetWorld(), UGameplayStatics::GetPlayerController(GetWorld(),0),EQuitPreference::Quit, true);
 }
 
-void UDuckDuckInstance::CreateASession()
+void UDuckDuckInstance::HostLocally()
 {
-	if (!SessionInterface.IsValid())
+	UWorld* World = GetWorld();
+	if (World)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("SessionInterface is invalid in CreateSession."));
+		World->ServerTravel("/Game/DuckDuckKazoo/Levels/Lobby?listen");
+	}
+}
+
+void UDuckDuckInstance::JoinLocally(const FString& IPAddress) {
+	APlayerController* Controller = GetFirstLocalPlayerController();
+
+	if (!ensure(Controller != nullptr)) return;
+
+	Controller->ClientTravel(*IPAddress, ETravelType::TRAVEL_Absolute);
+}
+
+
+/*void UDuckDuckInstance::HostSession()
+{
+	if (!SessionInterface.IsValid()) return;
+
+	FNamedOnlineSession* ExistingSession = SessionInterface->GetNamedSession(SESSION_NAME);
+	if (ExistingSession != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Session already exists. Deleting session..."));
+		SessionInterface->DestroySession(SESSION_NAME);
 		return;
 	}
-
-	SessionSettings = MakeShareable(new FOnlineSessionSettings());
-	SessionSettings->bIsLANMatch = true;
-	SessionSettings->NumPublicConnections = 4;
-	SessionSettings->bShouldAdvertise = true;
-
-	UE_LOG(LogTemp, Warning, TEXT("Attempting to create session..."));
-	SessionInterface->CreateSession(0, SESSION_NAME, *SessionSettings);
-}
+	else
+	{
+		//CreateASession();
+	}
+}*/
 
 void UDuckDuckInstance::SearchAvailableSessions()
 {
@@ -87,23 +105,6 @@ void UDuckDuckInstance::SearchAvailableSessions()
 		SessionSearch->bIsLanQuery = true;
 		SessionSearch->MaxSearchResults = 100;
 		SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
-	}
-}
-
-void UDuckDuckInstance::Host()
-{
-	if (!SessionInterface.IsValid()) return;
-
-	auto ExistingSession = SessionInterface->GetNamedSession(SESSION_NAME);
-	if (ExistingSession != nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Session already exists. Deleting session..."));
-		SessionInterface->DestroySession(SESSION_NAME);
-		return;
-	}
-	else
-	{
-		CreateASession();
 	}
 }
 
@@ -126,7 +127,7 @@ void UDuckDuckInstance::OnCreateSessionComplete(FName SessionName, bool bWasSucc
 	}
 }
 
-void UDuckDuckInstance::OnDestroySessionComplete(FName SessionName, bool bWasSuccessful)
+/*void UDuckDuckInstance::OnDestroySessionComplete(FName SessionName, bool bWasSuccessful)
 {
 	SessionInterface->ClearOnDestroySessionCompleteDelegate_Handle(OnDestroySessionCompleteDelegateHandle);
 
@@ -139,18 +140,7 @@ void UDuckDuckInstance::OnDestroySessionComplete(FName SessionName, bool bWasSuc
 	{
 		UE_LOG(LogTemp, Error, TEXT("Failed to destroy existing session."));
 	}
-}
-
-
-void UDuckDuckInstance::Join(const FString& IPAddress) {
-	APlayerController* Controller = GetFirstLocalPlayerController();
-
-	if (!ensure(Controller != nullptr)) return;
-
-	Controller->ClientTravel(*IPAddress, ETravelType::TRAVEL_Absolute);
-}
-
-
+}*/
 
 void UDuckDuckInstance::OpenMenu() {
 	if (!ensure(MainMenu != nullptr)) return;
@@ -162,3 +152,4 @@ void UDuckDuckInstance::OpenMenu() {
 	Menu->SetGameInstance(this);
 	Menu->AddToViewport();
 }
+
