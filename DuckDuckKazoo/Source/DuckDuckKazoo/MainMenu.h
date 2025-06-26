@@ -20,9 +20,11 @@ protected:
 	virtual void NativeConstruct() override;
 	virtual void NativeDestruct() override;
 
+	// Singleplayer properties
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<UButton> SingleplayerButton;
 
+	// Local multiplayer properties
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> LocalButton;
 
@@ -41,13 +43,29 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UEditableText* IPAddressField;
 
-
+	// Online multiplayer properties
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> OnlineButton;
 
 	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> OnlineHostButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> OnlineJoinButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> OnlineCancelButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> OnlineConfirmButton;
+
+
+	// Quit properties
+	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> QuitButton;
 
+
+	// Widget properties
 	UPROPERTY(meta = (BindWidget))
 	class UWidget* MainMenu;
 
@@ -84,4 +102,16 @@ private:
 	
 	UFUNCTION(Exec)
 	void OnOnlineButtonClicked();
+
+	UFUNCTION(Exec)
+	void OnOnlineHostButtonClicked();
+
+	UFUNCTION(Exec)
+	void OnOnlineJoinButtonClicked();
+
+	UFUNCTION(Exec)
+	void OnOnlineCancelButtonClicked();
+
+	UFUNCTION(Exec)
+	void OnOnlineConfirmButtonClicked();
 };

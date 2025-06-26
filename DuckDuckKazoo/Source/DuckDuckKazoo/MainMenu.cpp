@@ -15,14 +15,22 @@ void UMainMenu::NativeConstruct()
 	Super::NativeConstruct();
 
 	if (!ensure(SingleplayerButton != nullptr)) return;
+
 	if (!ensure(LocalButton != nullptr)) return;
 	if (!ensure(LocalJoinButton != nullptr)) return;
 	if (!ensure(LocalHostButton != nullptr)) return;
 	if (!ensure(LocalCancelButton != nullptr)) return;
 	if (!ensure(LocalConfirmButton != nullptr)) return;
 	if (!ensure(IPAddressField != nullptr)) return;
+
 	if (!ensure(OnlineButton != nullptr)) return;
+	if (!ensure(OnlineHostButton != nullptr)) return;
+	if (!ensure(OnlineJoinButton != nullptr)) return;
+	if (!ensure(OnlineCancelButton != nullptr)) return;
+	if (!ensure(OnlineConfirmButton != nullptr)) return;
+
 	if (!ensure(QuitButton != nullptr)) return;
+
 	if (!ensure(MenuSwitcher != nullptr)) return;
 
 	// Singleplayer
@@ -37,6 +45,10 @@ void UMainMenu::NativeConstruct()
 
 	// Online
 	OnlineButton->OnClicked.AddDynamic(this, &UMainMenu::OnOnlineButtonClicked);
+	OnlineHostButton->OnClicked.AddDynamic(this, &UMainMenu::OnOnlineHostButtonClicked);
+	OnlineJoinButton->OnClicked.AddDynamic(this, &UMainMenu::OnOnlineJoinButtonClicked);
+	OnlineCancelButton->OnClicked.AddDynamic(this, &UMainMenu::OnOnlineCancelButtonClicked);
+	OnlineConfirmButton->OnClicked.AddDynamic(this, &UMainMenu::OnOnlineConfirmButtonClicked);
 
 	// Quit
 	QuitButton->OnClicked.AddDynamic(this, &UMainMenu::OnQuitButtonClicked);
@@ -136,5 +148,40 @@ void UMainMenu::OnLocalConfirmButtonClicked()
 
 void UMainMenu::OnOnlineButtonClicked()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Online button clicked"));
+	if (MenuSwitcher)
+	{
+		MenuSwitcher->SetActiveWidgetIndex(2);
+	}
+}
+
+void UMainMenu::OnOnlineHostButtonClicked()
+{
+	if (DuckDuckInstance)
+	{
+		//DuckDuckInstance->HostSession();
+	}
+}
+
+void UMainMenu::OnOnlineJoinButtonClicked()
+{
+	if (MenuSwitcher)
+	{
+		MenuSwitcher->SetActiveWidgetIndex(4);
+	}
+}
+
+void UMainMenu::OnOnlineCancelButtonClicked()
+{
+	if (MenuSwitcher)
+	{
+		MenuSwitcher->SetActiveWidgetIndex(0);
+	}
+}
+
+void UMainMenu::OnOnlineConfirmButtonClicked()
+{
+	if (DuckDuckInstance)
+	{
+		//DuckDuckInstance->JoinSession();
+	}
 }
