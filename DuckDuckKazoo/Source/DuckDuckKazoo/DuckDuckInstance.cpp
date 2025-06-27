@@ -17,7 +17,6 @@ UDuckDuckInstance::UDuckDuckInstance(const FObjectInitializer& ObjectInitializer
 		MainMenu = MenuBPClass.Class;
 	}
 
-	ConstructorHelpers::FClassFinder<UUserWidget> 
 }
 
 void UDuckDuckInstance::Init()

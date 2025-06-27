@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\ServerDisplayRow.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\DuckDuckKazoo\\ServerDisplayRow.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\ServerDisplayRow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\DuckDuckKazoo\\ServerDisplayRow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\DuckDuckInstance.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|solutionrelative:Source\\DuckDuckKazoo\\DuckDuckInstance.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\MainMenu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|solutionrelative:Source\\DuckDuckKazoo\\MainMenu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\DuckDuckInstance.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|solutionrelative:Source\\DuckDuckKazoo\\DuckDuckInstance.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\ServerDisplayRow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|solutionrelative:Source\\DuckDuckKazoo\\ServerDisplayRow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\MainMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|solutionrelative:Source\\DuckDuckKazoo\\MainMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\ServerDisplayRow.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|solutionrelative:Source\\DuckDuckKazoo\\ServerDisplayRow.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\DuckDuckInstance.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|solutionrelative:Source\\DuckDuckKazoo\\DuckDuckInstance.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\MainMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C47619F7-4F08-329C-9C7C-CD9F621E3A6C}|Intermediate\\ProjectFiles\\DuckDuckKazoo.vcxproj|solutionrelative:Source\\DuckDuckKazoo\\MainMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,17 +34,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MainMenu.h",
               "DocumentMoniker": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\MainMenu.h",
               "RelativeDocumentMoniker": "Source\\DuckDuckKazoo\\MainMenu.h",
               "ToolTip": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\MainMenu.h",
               "RelativeToolTip": "Source\\DuckDuckKazoo\\MainMenu.h",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAYwHwAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAAIcAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-25T17:39:49.687Z",
               "IsPinned": true,
@@ -52,68 +52,64 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ServerDisplayRow.cpp",
               "DocumentMoniker": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\ServerDisplayRow.cpp",
               "RelativeDocumentMoniker": "Source\\DuckDuckKazoo\\ServerDisplayRow.cpp",
               "ToolTip": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\ServerDisplayRow.cpp",
               "RelativeToolTip": "Source\\DuckDuckKazoo\\ServerDisplayRow.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-27T14:09:33.339Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T14:09:33.339Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ServerDisplayRow.h",
               "DocumentMoniker": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\ServerDisplayRow.h",
               "RelativeDocumentMoniker": "Source\\DuckDuckKazoo\\ServerDisplayRow.h",
               "ToolTip": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\ServerDisplayRow.h",
               "RelativeToolTip": "Source\\DuckDuckKazoo\\ServerDisplayRow.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABoAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-27T14:08:50.172Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T14:08:50.172Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MainMenu.cpp",
               "DocumentMoniker": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\MainMenu.cpp",
               "RelativeDocumentMoniker": "Source\\DuckDuckKazoo\\MainMenu.cpp",
               "ToolTip": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\MainMenu.cpp",
               "RelativeToolTip": "Source\\DuckDuckKazoo\\MainMenu.cpp",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAnwLUAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAMIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-25T17:39:49.994Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-25T17:39:49.994Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "DuckDuckInstance.cpp",
               "DocumentMoniker": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\DuckDuckInstance.cpp",
               "RelativeDocumentMoniker": "Source\\DuckDuckKazoo\\DuckDuckInstance.cpp",
               "ToolTip": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\DuckDuckInstance.cpp",
               "RelativeToolTip": "Source\\DuckDuckKazoo\\DuckDuckInstance.cpp",
-              "ViewState": "AgIAAPEAAAAAAAAAAAAYwAQBAAASAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAwDYAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-24T12:08:11.69Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "DuckDuckInstance.h",
               "DocumentMoniker": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\DuckDuckInstance.h",
               "RelativeDocumentMoniker": "Source\\DuckDuckKazoo\\DuckDuckInstance.h",
               "ToolTip": "C:\\Users\\valen\\Desktop\\BTS\\GAMEN2\\DuckDuckKazoo\\DuckDuckKazoo\\Source\\DuckDuckKazoo\\DuckDuckInstance.h",
               "RelativeToolTip": "Source\\DuckDuckKazoo\\DuckDuckInstance.h",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAwEEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-24T12:08:11.374Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-24T12:08:11.374Z"
             }
           ]
         }
