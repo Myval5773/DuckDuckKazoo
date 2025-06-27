@@ -7,6 +7,7 @@
 #include "MainMenu.h"
 
 static const FName SESSION_NAME = FName("MySession");
+static const FName SERVER_NAME_SETTINGS_KEY = FName("ServerName");
 
 UDuckDuckInstance::UDuckDuckInstance(const FObjectInitializer& ObjectInitializer)
 {
@@ -15,6 +16,8 @@ UDuckDuckInstance::UDuckDuckInstance(const FObjectInitializer& ObjectInitializer
 	{
 		MainMenu = MenuBPClass.Class;
 	}
+
+	ConstructorHelpers::FClassFinder<UUserWidget> 
 }
 
 void UDuckDuckInstance::Init()
@@ -38,6 +41,9 @@ void UDuckDuckInstance::Init()
 
 			OnFindSessionCompleteDelegate = FOnFindSessionsCompleteDelegate::CreateUObject(this, &UDuckDuckInstance::OnFindSessionsComplete);
 			OnFindSessionCompleteDelegateHandle = SessionInterface->AddOnFindSessionsCompleteDelegate_Handle(OnFindSessionCompleteDelegate);
+		
+			OnJoinSessionCompleteDelegate = FOnJoinSessionCompleteDelegate::CreateUObject(this, &UDuckDuckInstance::OnJoinSessionComplete);
+			OnJoinSessionCompleteDelegateHandle = SessionInterface->AddOnJoinSessionCompleteDelegate_Handle(OnJoinSessionCompleteDelegate);
 		}
 	}
 
@@ -49,6 +55,18 @@ void UDuckDuckInstance::Init()
 			MainMenuWidget->SetGameInstance(this);
 			MainMenuWidget->AddToViewport();
 		}
+	}
+}
+
+void UDuckDuckInstance::Shutdown()
+{
+	Super::Shutdown();
+	if (SessionInterface.IsValid())
+	{
+		SessionInterface->ClearOnCreateSessionCompleteDelegate_Handle(OnCreateSessionCompleteDelegateHandle);
+		SessionInterface->ClearOnDestroySessionCompleteDelegate_Handle(OnDestroySessionCompleteDelegateHandle);
+		SessionInterface->ClearOnFindSessionsCompleteDelegate_Handle(OnFindSessionCompleteDelegateHandle);
+		SessionInterface->ClearOnJoinSessionCompleteDelegate_Handle(OnJoinSessionCompleteDelegateHandle); // If you add this delegate
 	}
 }
 
@@ -188,9 +206,12 @@ void UDuckDuckInstance::SearchAvailableSessions()
 
 void UDuckDuckInstance::OnFindSessionsComplete(bool bWasSuccessful)
 {
+	SessionInterface->ClearOnFindSessionsCompleteDelegate_Handle(OnFindSessionCompleteDelegateHandle);
+
+	TArray<FServerData> ServerData = TArray<FServerData>();
+
 	if (bWasSuccessful && SessionSearch.IsValid())
 	{
-		TArray<FServerData> ServerData = TArray<FServerData>();
 		for (const FOnlineSessionSearchResult& SearchResult : SessionSearch->SearchResults)
 		{
 			FServerData Data;
@@ -210,11 +231,43 @@ void UDuckDuckInstance::OnFindSessionsComplete(bool bWasSuccessful)
 			ServerData.Add(Data);
 		}
 	}
+	//notifyListeners(ServerData);
 }
 
+/*void UDuckDuckInstance::notifyListeners(TArray<FServerData> ServerData)
+{
+	for (UMainMenu* listener : Listeners)
+	{
+		listener->UpdateServerList(ServerData);
+	}
+}*/
 
+void UDuckDuckInstance::JoinOnline(uint32 Index)
+{
+	if (SessionInterface.IsValid() && SessionSearch.IsValid())
+	{
+		SessionInterface->JoinSession(0, SESSION_NAME, SessionSearch->SearchResults[Index]);
+	}
+}
 
+void UDuckDuckInstance::OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result)
+{
+	SessionInterface->ClearOnJoinSessionCompleteDelegate_Handle(OnJoinSessionCompleteDelegateHandle);
 
-
-
-
+	if (Result == EOnJoinSessionCompleteResult::Success)
+	{
+		FString ConnectionString;
+		if (SessionInterface->GetResolvedConnectString(SessionName, ConnectionString))
+		{
+			APlayerController* Controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+			if (Controller)
+			{
+				Controller->ClientTravel(ConnectionString, ETravelType::TRAVEL_Absolute);
+			}
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Couldn't join this session"));
+	}
+}

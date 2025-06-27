@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
+#include "ServerDisplayRow.h"
 #include "MainMenu.generated.h"
 
 class UButton;
@@ -71,6 +72,10 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	class UWidgetSwitcher* MenuSwitcher;
+
+	TSubclassOf<class UUserWidget> ServerDisplayRowClass;
+
+	//void UpdateServerList(TArray<FServerData> ServerData);
 
 public:
 	void SetGameInstance(class UDuckDuckInstance* GameInstance);

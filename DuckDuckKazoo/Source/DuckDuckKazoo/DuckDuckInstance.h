@@ -55,10 +55,14 @@ public:
 	// Online Subsystem join methods
 	UFUNCTION(Exec)
 	void SearchAvailableSessions();
+
+	UFUNCTION(Exec)
+	void JoinOnline(uint32 Index);
 	
 
 protected:
 	virtual void Init();
+	virtual void Shutdown();
 
 	UPROPERTY()
 	TSubclassOf<class UUserWidget> OnlineMenu;
@@ -83,7 +87,13 @@ private:
 	FOnFindSessionsCompleteDelegate OnFindSessionCompleteDelegate;
 	FDelegateHandle OnFindSessionCompleteDelegateHandle;
 
+	FOnJoinSessionCompleteDelegate OnJoinSessionCompleteDelegate;
+	FDelegateHandle OnJoinSessionCompleteDelegateHandle;
+
+
+
 	void OnCreateSessionComplete(FName SessionName, bool bWasSuccessful);
 	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
 	void OnFindSessionsComplete(bool bWasSuccessful);
+	void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 };

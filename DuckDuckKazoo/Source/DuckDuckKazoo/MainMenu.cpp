@@ -33,6 +33,8 @@ void UMainMenu::NativeConstruct()
 
 	if (!ensure(MenuSwitcher != nullptr)) return;
 
+
+
 	// Singleplayer
 	SingleplayerButton->OnClicked.AddDynamic(this, &UMainMenu::OnSingleplayerButtonClicked);
 
@@ -165,9 +167,10 @@ void UMainMenu::OnOnlineHostButtonClicked()
 
 void UMainMenu::OnOnlineJoinButtonClicked()
 {
-	if (MenuSwitcher)
+	if (MenuSwitcher && DuckDuckInstance)
 	{
 		MenuSwitcher->SetActiveWidgetIndex(4);
+		DuckDuckInstance->SearchAvailableSessions();
 	}
 }
 
@@ -183,6 +186,25 @@ void UMainMenu::OnOnlineConfirmButtonClicked()
 {
 	if (DuckDuckInstance)
 	{
-		//DuckDuckInstance->JoinSession();
+		UE_LOG(LogTemp, Warning, TEXT("Clicking online join button"));
+		//DuckDuckInstance->JoinOnline(Index.GetValue());
 	}
 }
+
+/*void UMainMenu::UpdateServerList(TArray<FServerData> ServerData)
+{
+	int Index = 0;
+	for (FServerData Data : ServerData)
+	{
+		UServerDisplayRow* ServerDisplayRow = CreateWidget<UServerDisplayRow>(this, ServerDisplayRowClass);
+		if (ServerDisplayRow)
+		{
+			ServerDisplayRow->Setup(this, Index++);
+			ServerDisplayRow->ServerName->SetText(FText::FromString(Data.Name));
+			ServerDisplayRow->HostName->SetText(FText::FromString(Data.HostName));
+			FString Fraction = FString::Printf(TEXT("%d/%d"), Data.CurrentPlayers, Data.MaxPlayers);
+			ServerDisplayRow->AvailableAndMaxSlotsText->SetText(FText::FromString(Fraction));
+			ServerList->AddChild(ServerDisplayRow);
+		}
+	}
+}*/
