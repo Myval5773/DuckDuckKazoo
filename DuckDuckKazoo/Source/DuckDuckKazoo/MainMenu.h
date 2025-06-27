@@ -115,3 +115,18 @@ private:
 	UFUNCTION(Exec)
 	void OnOnlineConfirmButtonClicked();
 };
+
+USTRUCT()
+struct FServerData
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	uint32 MaxPlayers;
+	UPROPERTY()
+	uint32 CurrentPlayers;
+	UPROPERTY()
+	FString HostName;
+	UPROPERTY()
+	FString Name;
+};

@@ -158,7 +158,8 @@ void UMainMenu::OnOnlineHostButtonClicked()
 {
 	if (DuckDuckInstance)
 	{
-		//DuckDuckInstance->HostSession();
+		UE_LOG(LogTemp,Warning, TEXT("Host Online button clicked"))
+		DuckDuckInstance->HostOnline();
 	}
 }
 

@@ -27,14 +27,8 @@ class DUCKDUCKKAZOO_API UDuckDuckInstance : public UGameInstance
 public:
 	UDuckDuckInstance(const FObjectInitializer& ObjectInitializer);
 
-	//UFUNCTION(Exec)
-	//void Host();
-
 	UFUNCTION(Exec, BlueprintCallable)
 	void OpenMenu();
-
-	UFUNCTION(Exec)
-	void SearchAvailableSessions();
 
 	UFUNCTION(Exec)
 	void HostLocally();
@@ -51,6 +45,18 @@ public:
 	UFUNCTION(Exec)
 	void QuitGame();
 
+	// Online Subsystem host methods
+	UFUNCTION(Exec)
+	void HostOnline();
+
+	UFUNCTION(Exec)
+	void CreateASession();
+
+	// Online Subsystem join methods
+	UFUNCTION(Exec)
+	void SearchAvailableSessions();
+	
+
 protected:
 	virtual void Init();
 
@@ -64,10 +70,9 @@ protected:
 	TSubclassOf<class UUserWidget> JoinMenu;
 
 private:
+	IOnlineSessionPtr SessionInterface;
 	TSharedPtr<FOnlineSessionSettings> SessionSettings;
 	TSharedPtr<class FOnlineSessionSearch> SessionSearch;
-
-	IOnlineSessionPtr SessionInterface;
 
 	FOnCreateSessionCompleteDelegate OnCreateSessionCompleteDelegate;
 	FDelegateHandle OnCreateSessionCompleteDelegateHandle;
@@ -79,6 +84,6 @@ private:
 	FDelegateHandle OnFindSessionCompleteDelegateHandle;
 
 	void OnCreateSessionComplete(FName SessionName, bool bWasSuccessful);
-	//void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
-	//void OnFindSessionsComplete(bool bWasSuccessful);	
+	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
+	void OnFindSessionsComplete(bool bWasSuccessful);
 };

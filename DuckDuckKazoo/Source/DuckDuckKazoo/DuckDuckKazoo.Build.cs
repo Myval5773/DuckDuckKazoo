@@ -9,5 +9,6 @@ public class DuckDuckKazoo : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "UMG", "OnlineSubsystem", "OnlineSubsystemUtils" });
-	}
+        DynamicallyLoadedModuleNames.Add("OnlineSubsystemSteam");
+    }
 }
