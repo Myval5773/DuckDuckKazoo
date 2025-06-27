@@ -51,6 +51,17 @@ void UDuckDuckInstance::Init()
 	}
 }
 
+void UDuckDuckInstance::OpenMenu() {
+	if (!ensure(MainMenu != nullptr)) return;
+
+	UMainMenu* Menu = CreateWidget<UMainMenu>(this, MainMenu);
+
+	if (!(ensure(Menu != nullptr))) return;
+
+	Menu->SetGameInstance(this);
+	Menu->AddToViewport();
+}
+
 void UDuckDuckInstance::StartSingleplayerMode(FName MapName)
 {
 	UGameplayStatics::OpenLevel(GetWorld(), MapName, true);
@@ -86,79 +97,3 @@ void UDuckDuckInstance::JoinLocally(const FString& IPAddress) {
 
 	Controller->ClientTravel(*IPAddress, ETravelType::TRAVEL_Absolute);
 }
-
-
-/*void UDuckDuckInstance::HostSession()
-{
-	if (!SessionInterface.IsValid()) return;
-
-	FNamedOnlineSession* ExistingSession = SessionInterface->GetNamedSession(SESSION_NAME);
-	if (ExistingSession != nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Session already exists. Deleting session..."));
-		SessionInterface->DestroySession(SESSION_NAME);
-		return;
-	}
-	else
-	{
-		//CreateASession();
-	}
-}*/
-
-void UDuckDuckInstance::SearchAvailableSessions()
-{
-	if (!ensure(SessionInterface != nullptr)) return;
-	SessionSearch = MakeShareable(new FOnlineSessionSearch());
-	if (SessionSearch.IsValid())
-	{
-		SessionSearch->bIsLanQuery = true;
-		SessionSearch->MaxSearchResults = 100;
-		SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
-	}
-}
-
-void UDuckDuckInstance::OnCreateSessionComplete(FName SessionName, bool bWasSuccessful)
-{
-	SessionInterface->ClearOnCreateSessionCompleteDelegate_Handle(OnCreateSessionCompleteDelegateHandle);
-
-	if (bWasSuccessful)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Session created successfully."));
-		UWorld* World = GetWorld();
-		if (World)
-		{
-			World->ServerTravel("/Game/ThirdPerson/Maps/ThirdPersonMap?listen");
-		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create session."));
-	}
-}
-
-/*void UDuckDuckInstance::OnDestroySessionComplete(FName SessionName, bool bWasSuccessful)
-{
-	SessionInterface->ClearOnDestroySessionCompleteDelegate_Handle(OnDestroySessionCompleteDelegateHandle);
-
-	if (bWasSuccessful)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Previous session destroyed. Creating new one."));
-		CreateASession();
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to destroy existing session."));
-	}
-}*/
-
-void UDuckDuckInstance::OpenMenu() {
-	if (!ensure(MainMenu != nullptr)) return;
-
-	UMainMenu* Menu = CreateWidget<UMainMenu>(this, MainMenu);
-
-	if (!(ensure(Menu != nullptr))) return;
-
-	Menu->SetGameInstance(this);
-	Menu->AddToViewport();
-}
-
