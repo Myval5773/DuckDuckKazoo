@@ -70,6 +70,15 @@ void UDuckDuckInstance::HostLocally()
 	}
 }
 
+void UDuckDuckInstance::LaunchGame()
+{
+	UWorld* World = GetWorld();
+	if (World)
+	{
+		World->ServerTravel("/Game/DuckDuckKazoo/Levels/MainMap?listen");
+	}
+}
+
 void UDuckDuckInstance::JoinLocally(const FString& IPAddress) {
 	APlayerController* Controller = GetFirstLocalPlayerController();
 

@@ -40,6 +40,9 @@ public:
 	void HostLocally();
 
 	UFUNCTION(Exec)
+	void LaunchGame();
+
+	UFUNCTION(Exec)
 	void JoinLocally(const FString& IPAddress);
 
 	UFUNCTION(Exec)
